@@ -17,7 +17,7 @@ usersRouter.post('/login', (req,res,next)=>{
             if(err) {
                 return next(err);
             }
-            res.redirect('/');
+            res.redirect('/posts');
         })
     })(req,res,next)
 })
@@ -48,14 +48,14 @@ usersRouter.post('/signup', async (req,res)=>{
 usersRouter.get('/google', passport.authenticate('google'));
 
 usersRouter.get('/google/callback', passport.authenticate('google', {
-    successReturnToOrRedirect : '/',
+    successReturnToOrRedirect : '/posts',
     failureRedirect : '/login'
 }))
 
 usersRouter.get('/kakao', passport.authenticate('kakao'));
 
 usersRouter.get('/kakao/callback', passport.authenticate('kakao' , {
-    successReturnToOrRedirect : '/',
+    successReturnToOrRedirect : '/posts',
     failureRedirect : '/login'
 }))
 
